@@ -16,7 +16,6 @@
     <services>
         <service id="payment.saferpay.httpclient.buzz" class="%payment.saferpay.httpclient.buzz.class%"/>
         <service id="payment.saferpay.httpclient.guzzle" class="%payment.saferpay.httpclient.guzzle.class%"/>
-        <service id="payment.saferpay.data.pay_init_parameter" class="%payment.saferpay.payinitparameter.default.class%"/>
 
         <service id="payment.saferpay.httpclient.factory" class="%payment.saferpay.httpclient.factory.class%">
             <argument type="service" id="payment.payzen.httpclient.guzzle"/>
@@ -35,9 +34,7 @@
             </call>
         </service>
 
-        <service id="payment.saferpay.payinitparameter.factory" class="%payment.saferpay.payinitparameter.factory.class%">
-            <argument type="service" id="payment.saferpay.data.pay_init_parameter"/>
-        </service>
-        <service id="payment.saferpay.payinitparameter.default" class="%payment.saferpay.payinitparameter.default.class%" />
+        <service id="payment.saferpay.payinitparameter.factory" class="%payment.saferpay.payinitparameter.factory.class%"/>
+        <service id="payment.saferpay.payinitparameter.default" class="%payment.saferpay.payinitparameter.default.class%"/>
     </services>
 </container>
