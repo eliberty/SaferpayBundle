@@ -9,6 +9,7 @@
         <parameter key="payment.saferpay.httpclient.factory.class">Payment\Bundle\SaferpayBundle\Http\HttpClientFactory</parameter>
         <parameter key="payment.saferpay.payinitparameter.factory.class">Payment\Bundle\SaferpayBundle\PayInitParameter\PayInitParameterFactory</parameter>
         <parameter key="payment.saferpay.httpclient.buzz.class">Payment\HttpClient\BuzzClient</parameter>
+        <parameter key="payment.saferpay.httpclient.guzzle.class">Payment\HttpClient\GuzzleClient</parameter>
         <parameter key="payment.saferpay.payinitparameter.default.class">Payment\Saferpay\Data\PayInitParameter</parameter>
     </parameters>
 
