@@ -37,7 +37,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('httpclient')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('serviceid')->defaultValue('payment.saferpay.httpclient.buzz')->end()
+                        ->scalarNode('serviceid')->defaultValue('httplug.client')->end()
                     ->end()
                 ->end()
             ->end()

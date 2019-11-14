@@ -15,21 +15,14 @@ class CompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         $saferpayServiceId = 'payment.saferpay';
-        $httpClientFactoryServiceId = 'payment.saferpay.httpclient.factory';
         $payInitParameterFactoryServiceId = 'payment.saferpay.payinitparameter.factory';
 
         if(
             !$container->hasDefinition($saferpayServiceId) OR
-            !$container->hasDefinition($httpClientFactoryServiceId) OR
             !$container->hasDefinition($payInitParameterFactoryServiceId)
         ){
             return;
         }
-
-        $httpClientFactoryDefinition = $container->getDefinition($httpClientFactoryServiceId);
-        $httpClientFactoryDefinition->addArgument(
-            new Reference($container->getParameter('payment.saferpay.httpclient.serviceid'))
-        );
 
         $payInitParameterFactoryDefinition = $container->getDefinition($payInitParameterFactoryServiceId);
         $payInitParameterFactoryDefinition->addArgument(
@@ -48,9 +41,21 @@ class CompilerPass implements CompilerPassInterface
             return;
         }
 
+        $httplugServiceId= $container->getParameter('payment.saferpay.httpclient.serviceid');
+
         $saferpayDefinition = $container->getDefinition($saferpayServiceId);
-        $saferpayDefinition->addMethodCall('setLogger', array(
-            new Reference($loggerServiceId)
-        ));
+
+        $saferpayDefinition->addArgument(
+            new Reference('httplug.message_factory')
+        );
+
+        $saferpayDefinition->addMethodCall('setLogger', [
+                new Reference($loggerServiceId)
+            ]
+        );
+
+        $saferpayDefinition->addMethodCall('setHttpClient', [
+            new Reference($httplugServiceId)
+        ]);
     }
 }

@@ -15,8 +15,9 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "payment/saferpay": "2.*",
+        "php": ">=7.2",
+        "php-http/client-implementation": "^1.0",
+        "payment/saferpay": "dev-httplug",
         "symfony/config": ">=2.1.0",
         "symfony/dependency-injection": ">=2.1.0",
         "symfony/http-kernel": ">=2.1.0"
